@@ -13,7 +13,7 @@ export class GoogleLogin {
   google: any;
 
   signInWithGoogle() {
-    const clientId = '925914486320-lrhej1a8iv3vdh4fcs3gh37ckt18i9m2.apps.googleusercontent.com';
+    const clientId = ''; // TODO
     const redirectUri = 'http://localhost:4200/auth-callback'; 
     const scope = 'openid email profile';
     const state = crypto.randomUUID(); // for CSRF protection, optional
