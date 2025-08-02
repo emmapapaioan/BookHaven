@@ -1,3 +1,65 @@
-@use "tailwind-styles.css";
+@use '@angular/material' as mat;
 
+// Define palettes clearly at the top:
+$my-primary: mat.$azure-palette;
+$my-secondary: mat.$blue-palette;
+$my-tertiary: mat.$green-palette; // Optional accent color
+$my-error: mat.$red-palette;      // Explicit error color
 
+// Light Theme
+.light-theme {
+  @include mat.theme((
+    color: (
+      primary: $my-primary,
+      secondary: $my-secondary,
+      tertiary: $my-tertiary,
+      error: $my-error,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+
+  color-scheme: light;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  --sidebar-bg: #f9fafb;
+  --sidebar-text: #1f2937;
+  --sidebar-border: #e5e7eb;
+  --sidebar-icon: #6b7280;
+  --sidebar-accent: #6366f1;
+  --sidebar-hover-bg: #eef2ff; // soft hover background
+  --sidebar-hover-text: #4338ca; // optional deeper indigo
+}
+
+// Dark Theme
+.dark-theme {
+  @include mat.theme((
+    color: (
+      primary: $my-primary,
+      secondary: $my-secondary,
+      tertiary: $my-tertiary,
+      error: $my-error,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+
+  color-scheme: dark;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  --sidebar-bg: #111827;
+  --sidebar-text: #e5e7eb;
+  --sidebar-border: #1f2937;
+  --sidebar-icon: #9ca3af;
+  --sidebar-accent: #8b5cf6;       // brighter purple
+  --sidebar-hover-bg: #1e1b4b;     // dark hover
+  --sidebar-hover-text: #c4b5fd;   // light purple text
+}
+
+// Global reset styles (unchanged)
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
