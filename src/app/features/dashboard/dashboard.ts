@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { DarkModeManager } from '../../core/dark-mode-manager';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,10 +10,7 @@ import { DarkModeManager } from '../../core/dark-mode-manager';
 })
 export class Dashboard {
 
-  constructor(private darkModeManager: DarkModeManager) { }
+  constructor() { }
 
-  toggleDarkMode() {
-    this.darkModeManager.toggleDarkMode();
-  }
 
 }
