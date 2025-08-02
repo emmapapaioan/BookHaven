@@ -1,0 +1,11 @@
+<section class="home">
+  <h1>Welcome to Book Haven <mat-icon>books</mat-icon></h1>
+  <ng-container *ngIf="!isLoggedIn(); else welcomeUser">
+    <p>Log in to access your dashboard and manage your library.</p>
+    <app-google-login></app-google-login>
+  </ng-container>
+
+  <ng-template #welcomeUser>
+    <p>Welcome {{ user()?.name }}!</p>
+  </ng-template>
+</section>
