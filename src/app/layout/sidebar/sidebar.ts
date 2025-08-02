@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  standalone: true,
+  imports: [MatSidenavModule, MatButtonModule],
   templateUrl: './sidebar.html',
-  styleUrl: './sidebar.scss'
+  styleUrls: ['./sidebar.scss']
 })
 export class Sidebar {
 

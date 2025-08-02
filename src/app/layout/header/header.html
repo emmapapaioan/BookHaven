@@ -1,1 +1,24 @@
-<p>header works!</p>
+<header class="header">
+  <div class="left-section">
+    <input class="search-field" placeholder="Search..." />
+  </div>
+
+  <div class="right-section">
+    <ng-container *ngIf="isLoggedIn(); else loginBtn">
+      <div class="user">
+        <img class="avatar" [src]="user()?.picture" alt="User" />
+        <span>{{ user()?.name }}</span>
+        <button mat-button (click)="logout()">Logout</button>
+      </div>
+    </ng-container>
+
+    <ng-template #loginBtn>
+      <app-google-login></app-google-login>
+    </ng-template>
+
+    <button mat-icon-button (click)="toggleTheme()">
+      <mat-icon>dark_mode</mat-icon>
+    </button>
+  </div>
+</header>
+
