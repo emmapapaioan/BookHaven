@@ -14,7 +14,7 @@
   ));
   
 
-  //background-color: var(--mat-sys-surface);
+  background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
 
@@ -42,7 +42,6 @@
     density: 0,
   ));
 
-  //color-scheme: dark; //  makes the browser render form controls (inputs etc) with dark backgrounds
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
