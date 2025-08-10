@@ -52,3 +52,13 @@ button[mat-button] {
   }
 }
 
+.logo-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.logo {
+  height: 4rem;
+  width: fit-content;
+}

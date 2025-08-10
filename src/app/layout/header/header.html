@@ -1,12 +1,13 @@
 <header class="header">
   <div class="left-section">
+    <mat-icon>search</mat-icon>
     <input class="search-field" placeholder="Search..." />
   </div>
 
   <div class="right-section">
     <ng-container *ngIf="isLoggedIn(); else loginBtn">
       <div class="user">
-        <img class="avatar" [src]="user()?.picture" alt="User" />
+        <img class="avatar" [src]="user()?.picture" (error)="onAvatarError($event)"/>
         <span>{{ user()?.name }}</span>
         <button mat-button (click)="logout()">Logout</button>
       </div>

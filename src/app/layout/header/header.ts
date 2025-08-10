@@ -39,4 +39,8 @@ export class Header {
     this.themeManager.toggleTheme();
   }
 
+  onAvatarError(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.src = 'images/default-avatar.png'; // Fallback in case of image load error
+  }
 }
