@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { GOOGLE_AUTH_CONFIG } from '../../config/google-auth-config';
+import { GoogleUser } from '../../shared/interfaces/google-user';
 
 @Component({
   selector: 'app-google-login',
@@ -9,12 +11,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./google-login.scss'],
 })
 export class GoogleLogin {
-  user: any = null;
-  google: any;
+  private config = inject(GOOGLE_AUTH_CONFIG);
+  user: GoogleUser | null = null;
 
   signInWithGoogle() {
-    const clientId = ''; // TODO
-    const redirectUri = 'http://localhost:4200/auth-callback'; 
+    const clientId = this.config.clientId;
+    const redirectUri = this.config.redirectUri;
     const scope = 'openid email profile';
     const state = crypto.randomUUID(); // for CSRF protection, optional
 

@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Google OAuth2 config
+src/app/config/google-auth-config.ts
