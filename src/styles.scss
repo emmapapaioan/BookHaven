@@ -104,7 +104,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .justify-content-start {
-   justify-content: start;
+   justify-content: flex-start;
+}
+
+.justify-content-end {
+   justify-content: flex-end;
 }
 
 .justify-content-between {
