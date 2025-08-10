@@ -28,6 +28,13 @@
   --sidebar-logo-text: #766eda;
 
   --title-color:#766eda;
+
+  --mat-icon: #605d62;
+  --mat-icon-primary: #6750a4; 
+  --mat-icon-accent: #625b71; 
+  --mat-icon-warn: #ba1a1a;
+
+  --mat-spinner-color: #6750a4;
 }
 
 // Dark Theme
@@ -46,22 +53,29 @@
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
 
-  --sidebar-bg: #111827;
-  --sidebar-text: #e5e7eb;
+
   --sidebar-border: #1f2937;
   --sidebar-icon: #9ca3af;
-  --sidebar-accent: #8b5cf6;       // brighter purple
-  --sidebar-hover-bg: #1e1b4b;     // dark hover
-  --sidebar-hover-text: #c4b5fd;   // light purple text
+  --sidebar-accent: #c4b5fd;     
   --sidebar-logo-text: #9f9cc6;
 
   --title-color:#9f9cc6;
+
+  --mat-icon: #cac5cb;
+  --mat-icon-primary: #938ba9; 
+  --mat-icon-accent: #ccc2dc; 
+  --mat-icon-warn: #ffb4ab;
+
+  --mat-spinner-color: #938ba9;
 }
 
 // Global reset styles (unchanged)
+
+// General
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+// Titles
 .title-bold {
   color: var(--title-color);
   font-weight: 500;
@@ -71,6 +85,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: var(--title-color);
 }
 
+// Flex utils
 .d-flex {
   display: flex;
 }
@@ -96,8 +111,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   justify-content: space-between;
 }
 
+// Gap utils
 .gap-1 { gap: 0.25rem; } // 4px
 .gap-2 { gap: 0.5rem; }  // 8px
 .gap-3 { gap: 0.75rem; } // 12px
 .gap-4 { gap: 1rem; }    // 16px
 .gap-5 { gap: 1.25rem; } // 20px
+
+// Mat icons
+.mat-icon.mat-primary { color: var(--mat-icon-primary) }
+.mat-icon.mat-accent { color: var(--mat-icon-accent) }
+.mat-icon.mat-warn { color: var(--mat-icon-warn) }
+
+// Angular Material Overrides
+:root {
+  @include mat.progress-spinner-overrides((
+    active-indicator-color: var(--mat-spinner-color),
+  ));
+
+  // TODO: Set tooltip colors
+  // @include mat.tooltip-overrides((
+  //   container-color: orange,
+  //   container-shape: red,
+  // ));
+}
