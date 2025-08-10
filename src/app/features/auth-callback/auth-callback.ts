@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { AuthManager } from '../../core/auth-manager';
 
 @Component({
   selector: 'app-auth-callback',
   standalone: true,
-  imports: [],
+  imports: [MatProgressSpinnerModule],
   templateUrl: './auth-callback.html',
   styleUrls: ['./auth-callback.scss']
 })
