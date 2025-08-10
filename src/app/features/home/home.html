@@ -11,3 +11,11 @@
     <p>Welcome {{ user()?.name }}!</p>
   }
 </section>
+
+<mat-selection-list>
+  @for (book of books$ | async; track book.id) {
+    <mat-list-option>{{ book.volumeInfo.title }} - {{ book.volumeInfo.authors?.join(', ') ?? 'N/A'}}</mat-list-option>
+  }
+</mat-selection-list>
+
+
