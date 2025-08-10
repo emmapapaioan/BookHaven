@@ -1,26 +1,20 @@
 @use '@angular/material' as mat;
-
-// Define palettes clearly at the top:
-$my-primary: mat.$azure-palette;
-$my-secondary: mat.$blue-palette;
-$my-tertiary: mat.$green-palette; // Optional accent color
-$my-error: mat.$red-palette;      // Explicit error color
+@use 'app/styles/theme-colors' as theme;
 
 // Light Theme
 .light-theme {
   @include mat.theme((
     color: (
-      primary: $my-primary,
-      secondary: $my-secondary,
-      tertiary: $my-tertiary,
-      error: $my-error,
+      primary: theme.$primary-palette,
+      tertiary: theme.$tertiary-palette,
+      theme-type: light,
     ),
     typography: Roboto,
     density: 0,
   ));
+  
 
-  color-scheme: light;
-  background-color: var(--mat-sys-surface);
+  //background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
 
@@ -31,22 +25,24 @@ $my-error: mat.$red-palette;      // Explicit error color
   --sidebar-accent: #6366f1;
   --sidebar-hover-bg: #eef2ff; // soft hover background
   --sidebar-hover-text: #4338ca; // optional deeper indigo
+  --sidebar-logo-text: #766eda;
+
+  --title-color:#766eda;
 }
 
 // Dark Theme
 .dark-theme {
   @include mat.theme((
     color: (
-      primary: $my-primary,
-      secondary: $my-secondary,
-      tertiary: $my-tertiary,
-      error: $my-error,
+      primary: theme.$primary-palette,
+      tertiary: theme.$tertiary-palette,
+      theme-type: dark
     ),
     typography: Roboto,
     density: 0,
   ));
 
-  color-scheme: dark;
+  //color-scheme: dark; //  makes the browser render form controls (inputs etc) with dark backgrounds
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
@@ -58,8 +54,51 @@ $my-error: mat.$red-palette;      // Explicit error color
   --sidebar-accent: #8b5cf6;       // brighter purple
   --sidebar-hover-bg: #1e1b4b;     // dark hover
   --sidebar-hover-text: #c4b5fd;   // light purple text
+  --sidebar-logo-text: #9f9cc6;
+
+  --title-color:#9f9cc6;
 }
 
 // Global reset styles (unchanged)
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.title-bold {
+  color: var(--title-color);
+  font-weight: 500;
+}
+
+.title-normal {
+  color: var(--title-color);
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-start {
+   justify-content: start;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.gap-1 { gap: 0.25rem; } // 4px
+.gap-2 { gap: 0.5rem; }  // 8px
+.gap-3 { gap: 0.75rem; } // 12px
+.gap-4 { gap: 1rem; }    // 16px
+.gap-5 { gap: 1.25rem; } // 20px

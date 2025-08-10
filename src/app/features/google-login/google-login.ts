@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { GOOGLE_AUTH_CONFIG } from '../../config/google-auth-config';
 import { GoogleUser } from '../../shared/interfaces/google-user';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-google-login',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule],
   templateUrl: './google-login.html',
   styleUrls: ['./google-login.scss'],
 })
 export class GoogleLogin {
+  @Input() isHeader: boolean = false;
   private config = inject(GOOGLE_AUTH_CONFIG);
   user: GoogleUser | null = null;
 

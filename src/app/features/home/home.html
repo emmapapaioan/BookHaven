@@ -1,5 +1,9 @@
-<section class="home">
-  <h1>Welcome to Book Haven <mat-icon>books</mat-icon></h1>
+<section class="d-flex-column align-items-center justify-content-center">
+  <div class="d-flex align-items-center justify-contenct-center">
+    <h1 class="title-bold">Welcome to Book Haven</h1>
+    <img src="images/book-haven-welcome.png" class="welcome-img"/>
+  </div>
+
   <ng-container *ngIf="!isLoggedIn(); else welcomeUser">
     <p>Log in to access your dashboard and manage your library.</p>
     <app-google-login></app-google-login>
