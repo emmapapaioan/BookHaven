@@ -4,12 +4,10 @@
     <img src="images/book-haven-welcome.png" class="welcome-img"/>
   </div>
 
-  <ng-container *ngIf="!isLoggedIn(); else welcomeUser">
+  @if (!isLoggedIn()) {
     <p>Log in to access your dashboard and manage your library.</p>
     <app-google-login></app-google-login>
-  </ng-container>
-
-  <ng-template #welcomeUser>
+  } @else {
     <p>Welcome {{ user()?.name }}!</p>
-  </ng-template>
+  }
 </section>

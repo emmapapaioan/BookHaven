@@ -1,19 +1,15 @@
-<ng-container *ngIf="isHeader; else isNotHeader">
+@if (isHeader) {
   <button matButton (click)="signInWithGoogle()">
     <div class="d-flex align-items-center justify-content-center gap-2">
       <img src="images/google-icon.svg" alt="Google Icon" class="google-icon" />
       <div>Sign in</div>
     </div>
   </button>
-</ng-container>
-
-<ng-template #isNotHeader>
-   <button matFab extended (click)="signInWithGoogle()">
+} @else {
+  <button matFab extended (click)="signInWithGoogle()">
     <div class="d-flex align-items-center justify-content-center gap-2">
       <img src="images/google-icon.svg" alt="Google Icon" class="google-icon" />
       <div>Sign in with google</div>
     </div>
   </button>
-</ng-template>
-
-
+}

@@ -5,17 +5,15 @@
   </div>
 
   <div class="right-section d-flex align-items-center gap-2">
-    <ng-container *ngIf="isLoggedIn(); else loginBtn">
+    @if (isLoggedIn()) {
       <div class="user d-flex align-items-center gap-1">
         <img class="avatar" [src]="user()?.picture" (error)="onAvatarError($event)"/>
         <span>{{ user()?.name }}</span>
         <button mat-button (click)="logout()">Logout</button>
       </div>
-    </ng-container>
-
-    <ng-template #loginBtn>
+    } @else {
       <app-google-login [isHeader]="true"></app-google-login>
-    </ng-template>
+    }
 
     <button mat-icon-button (click)="toggleTheme()">
       <mat-icon>dark_mode</mat-icon>
