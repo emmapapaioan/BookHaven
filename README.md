@@ -1,59 +1,56 @@
 # BookHaven (⚠️ Work in progress)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
+## 📖 Description  
+BookHaven is an Angular application for exploring and managing books.  
 
-## Development server
+Features:  
+- Search books via **Google Books API**  
+- View details, prices, and related info  
+- Retrieve and manage personal **Google Library shelves** (favorites, to-read, have read, etc.)  
+- Google Sign-In for personalized data  
 
-To start a local development server, run:
+> **Note:** The file `google-auth-config.ts` (containing the OAuth Client ID) is **not included** in this repository for security reasons. You must provide your own.
 
-```bash
+---
+
+## 🔑 Google OAuth Setup  
+1. Go to [Google Cloud Console](https://console.cloud.google.com/) → **APIs & Services** → **Credentials**  
+2. Create an **OAuth 2.0 Client ID** for your application  
+3. Enable **Google Books API**  
+4. Add your Client ID in `google-auth-config.ts` using the template below  
+
+---
+
+## 🛠 `google-auth-config.ts` Template  
+```ts
+import { InjectionToken, isDevMode } from '@angular/core';
+
+export interface GoogleAuthConfig {
+  clientId: string;
+  redirectUri: string;
+}
+
+export const GOOGLE_AUTH_CONFIG = new InjectionToken<GoogleAuthConfig>('GoogleAuthConfig');
+
+const devConfig: GoogleAuthConfig = {
+  clientId: 'your-dev-client-id',
+  redirectUri: 'http://localhost:4200/auth-callback',
+};
+
+const prodConfig: GoogleAuthConfig = {
+  clientId: 'your-prod-client-id',
+  redirectUri: 'https://yourdomain.com/auth-callback',
+};
+
+export const googleAuthConfig = isDevMode() ? devConfig : prodConfig;
+```
+---
+
+## 📦 Installation 
+```ts
+git clone https://github.com/emmapapaioan/BookHaven
+cd BookHaven
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
