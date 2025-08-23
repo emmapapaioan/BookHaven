@@ -1,0 +1,18 @@
+<div class="d-flex align-items-center justify-content-center gap-3 m-6">
+    @if (!isLoading) {
+        <button mat-icon-button (click)="query && searchBooks()">
+            <mat-icon>search</mat-icon>
+        </button>
+    } @else {
+        <button mat-icon-button>
+            <mat-spinner diameter="20"></mat-spinner>
+        </button> 
+    }
+    <input class="search-field" [(ngModel)]="query" placeholder="Search books" (keyup.enter)="searchBooks()"/>
+</div>
+
+<mat-selection-list>
+  @for (book of books$ | async; track book.id) {
+    <mat-list-option>{{ book.volumeInfo.title }} - {{ book.volumeInfo.authors?.join(', ') ?? 'N/A'}}</mat-list-option>
+  }
+</mat-selection-list>

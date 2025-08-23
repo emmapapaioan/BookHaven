@@ -7,15 +7,7 @@
   @if (!isLoggedIn()) {
     <p>Log in to access your dashboard and manage your library.</p>
     <app-google-login></app-google-login>
-  } @else {
-    <p>Welcome {{ user()?.name }}!</p>
   }
 </section>
-
-<mat-selection-list>
-  @for (book of books$ | async; track book.id) {
-    <mat-list-option>{{ book.volumeInfo.title }} - {{ book.volumeInfo.authors?.join(', ') ?? 'N/A'}}</mat-list-option>
-  }
-</mat-selection-list>
 
 

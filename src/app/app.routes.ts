@@ -4,5 +4,6 @@ export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'dashboard', loadComponent: () => import('./features/dashboard/dashboard').then(m => m.Dashboard) },
   { path: 'home', loadComponent: () => import('./features/home/home').then(m => m.Home) },
-  { path: 'auth-callback', loadComponent: () => import('./features/auth-callback/auth-callback').then(m => m.AuthCallback) }
+  { path: 'auth-callback', loadComponent: () => import('./features/auth-callback/auth-callback').then(m => m.AuthCallback) },
+  { path: 'search-books', loadComponent: () => import('./features/search-books/search-books').then(m => m.SearchBooks) },
 ];
