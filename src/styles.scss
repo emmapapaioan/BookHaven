@@ -4,6 +4,8 @@
 @use 'app/styles/flex';
 @use 'app/styles/gap';
 @use 'app/styles/spacing';
+@use 'app/styles/grid';
+@use 'app/styles/overflow';
 
 
 // Light Theme
@@ -90,6 +92,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: var(--title-color);
 }
 
+// Cards
+.mat-mdc-card-title {
+  color: var(--title-color);
+  font-weight: 500 !important;
+  font-size: medium !important;
+}
+
+.mat-mdc-card-subtitle {
+  color: var(--mat-sys-primary-container) !important;
+  font-size: small !important;
+}
+
 // Mat icons
 .mat-icon.mat-primary { color: var(--mat-icon-primary) }
 .mat-icon.mat-accent { color: var(--mat-icon-accent) }
@@ -107,3 +121,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   //   container-shape: red,
   // ));
 }
+
