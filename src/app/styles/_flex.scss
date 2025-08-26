@@ -17,13 +17,29 @@
 }
 
 .justify-content-start {
-   justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .justify-content-end {
-   justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .justify-content-between {
   justify-content: space-between;
+}
+
+// Wrapping helpers
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -0.5rem; 
+  margin-left: -0.5rem;
 }
