@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 
 import { GoogleBook } from '../shared/interfaces/google-books-list';
 
@@ -7,13 +6,17 @@ import { GoogleBook } from '../shared/interfaces/google-books-list';
   providedIn: 'root'
 })
 export class GoogleBooksStore {
-  googleBooks$ = new BehaviorSubject<GoogleBook[]>([]);
+  books = signal<GoogleBook[]>([]);
 
-  setGoogleBooks(googleBooks: GoogleBook[]): void {
-    this.googleBooks$.next(googleBooks);
+  setBooks(googleBooks: GoogleBook[]): void {
+    this.books.set(googleBooks);
   }
 
-  getGoogleBooks(): Observable<GoogleBook[]> {
-    return this.googleBooks$.asObservable();
+  addBooks(googleBooks: GoogleBook[]): void {
+    this.books.update(prev => [...prev, ...googleBooks]);
+  }
+
+  clearBooks(): void {
+    this.books.set([]);
   }
 }
