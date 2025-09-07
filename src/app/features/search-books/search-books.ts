@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { BehaviorSubject } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { BookDetails } from '../book-details/book-details';
+import { BookDetails } from './book-details/book-details';
 
 @Component({
   selector: 'app-search-books',

@@ -1,0 +1,36 @@
+@if (book) {
+  <div class="col">
+    <mat-card class="book-card h-100" appearance="outlined">
+
+      <!-- Image wrapper with aspect ratio -->
+      <div class="book-image-wrapper">
+        <img mat-card-image [src]="book.volumeInfo.imageLinks?.thumbnail" alt="Book image">
+      </div>
+
+      <!-- Header -->
+      <mat-card-header>
+        <div mat-card-avatar class="book-avatar">
+          <img [src]="book.volumeInfo.imageLinks?.thumbnail" alt="avatar">
+        </div>
+        <mat-card-title>
+          {{ book.volumeInfo.title }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ book.volumeInfo.categories?.join(', ') ?? 'N/A' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <!-- Content -->
+      <mat-card-content class="card-content my-3" [matTooltip]="book.volumeInfo.description" matTooltipClass="card-content-tooltip">
+        {{ book.volumeInfo.description ?? 'No description available' }}
+      </mat-card-content>
+
+      <!-- Actions -->
+      <mat-card-actions class="mt-auto">
+        <button mat-button>Info</button>
+        <button mat-button>Add</button>
+      </mat-card-actions>
+
+    </mat-card>
+  </div>
+}
