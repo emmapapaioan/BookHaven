@@ -2,7 +2,7 @@
     <mat-form-field appearance="outline" class="search-bar">
         <mat-icon matPrefix>search</mat-icon>
         <input matInput placeholder="Search books" [(ngModel)]="query" (keyup.enter)="searchBooks()"/>
-        @if (!isLoading) {
+        @if (!isSearchLoading) {
             <button mat-icon-button matSuffix class="me-2" (click)="query && searchBooks()">
                 <mat-icon>arrow_forward</mat-icon>
             </button>
@@ -13,10 +13,22 @@
     <!-- <img src="images/powered-by-google.png" alt="Powered by Google" style="height: 24px;" /> -->
 </div>
 
-
+@if (books().length && hasMoreBooks) {
+  <div class="d-flex justify-content-start my-5 ms-4">
+    <button mat-flat-button color="primary" (click)="loadMoreBooks()" class="d-flex align-items-center gap-1" [disabled]="isLoadMoreLoading || isSearchLoading">
+      @if (!isLoadMoreLoading) {
+        <mat-icon>expand_more</mat-icon> 
+      } @else {
+        <mat-spinner diameter="16" matSuffix class="inline-spinner me-2"></mat-spinner>
+      }
+      <span>Load more</span>
+    </button>
+    <!-- TODO: Add paginator -->
+  </div>
+}
 
 <div class="row mx-3">
-  @for (book of books$ | async; track book.id) {
+  @for (book of books(); track book.id) {
     <div class="col-3 mb-4">
       <app-book-details [book]="book"></app-book-details>
     </div>
