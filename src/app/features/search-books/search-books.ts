@@ -37,6 +37,8 @@ export class SearchBooks {
   query: string = '';
   googleBooks: GoogleBook[] = [];
   isLoading: boolean = false;
+  maxResults: number = 40;
+  startIndex: number = 0;
 
   books$: BehaviorSubject<GoogleBook[]> = new BehaviorSubject<GoogleBook[]>([]);
 
@@ -47,11 +49,12 @@ export class SearchBooks {
   searchBooks() {
     this.isLoading = true;
 
-    this.googleBooksApi.searchBooks(this.query)
+    this.googleBooksApi.searchBooks(this.query, this.maxResults, this.startIndex)
       .subscribe({
         next: (res) => {
           this.googleBooksStore.setGoogleBooks(res?.items ?? []);
           this.isLoading = false;
+          this.startIndex +=40;
         },
         error: (error) => {
           this.isLoading = false;
