@@ -2,12 +2,14 @@ import { inject, Injectable, signal } from '@angular/core';
 
 import { GoogleUser } from '../shared/interfaces/google-user';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthManager {
   private readonly http = inject(HttpClient);
+  private router = inject(Router);
 
   user = signal<GoogleUser | null>(null);
   token = signal<string | null>(null);
@@ -41,5 +43,6 @@ export class AuthManager {
     this.token.set(null);
     this.user.set(null);
     localStorage.clear();
+    this.router.navigateByUrl('/home');
   }
 }
