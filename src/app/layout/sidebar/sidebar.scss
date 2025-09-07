@@ -35,7 +35,7 @@ button[mat-button] {
   justify-content: flex-start;
   border-radius: 0.5rem;
 
-  &.active {
+  &.active-link {
     color: var(--sidebar-accent);
     font-weight: 600;
   }
@@ -44,4 +44,8 @@ button[mat-button] {
 .logo {
   height: 4rem;
   width: fit-content;
+}
+
+.logo-container {
+  cursor: pointer;
 }

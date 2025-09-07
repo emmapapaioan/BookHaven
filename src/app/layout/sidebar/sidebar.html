@@ -2,14 +2,14 @@
   <mat-drawer mode="side" opened class="custom-sidenav">
 
     <div class="sidenav-section d-flex flex-column">
-      <div class="logo-container d-flex justify-content-start align-items-center">
+      <div class="logo-container d-flex justify-content-start align-items-center" routerLink="/home">
         <img src="images/book-haven-logo1.png" alt="Book Haven Logo" class="logo">
         <span class="title-bold">Book Haven</span>
       </div>
       
       <p class="sidenav-title title-normal">My Library</p>
-      <button mat-button>Dashboard</button>
-      <button mat-button (click)="goToSearchBooks()">Search </button>
+      <button mat-button routerLink="/dashboard" routerLinkActive="active-link">Dashboard</button>
+      <button mat-button routerLink="/search-books" routerLinkActive="active-link">Search Books</button>
       <button mat-button>Favorites </button>
       <button mat-button>My Shelves</button>
       <button mat-button>Reading Progress</button>
