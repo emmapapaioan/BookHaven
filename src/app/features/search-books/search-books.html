@@ -10,9 +10,12 @@
             <mat-spinner diameter="20" matSuffix class="me-3"></mat-spinner>
         }
     </mat-form-field>
+    <!-- <img src="images/powered-by-google.png" alt="Powered by Google" style="height: 24px;" /> -->
 </div>
 
-<div class="row justify-content-between mx-3">
+
+
+<div class="row mx-3">
   @for (book of books$ | async; track book.id) {
     <div class="col-3 mb-4">
       <app-book-details [book]="book"></app-book-details>

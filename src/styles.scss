@@ -1,13 +1,6 @@
 @use '@angular/material' as mat;
 @use 'app/styles/theme-colors' as theme;
 
-@use 'app/styles/flex';
-@use 'app/styles/gap';
-@use 'app/styles/spacing';
-@use 'app/styles/grid';
-@use 'app/styles/overflow';
-
-
 // Light Theme
 .light-theme {
   @include mat.theme((
