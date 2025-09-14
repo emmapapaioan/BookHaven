@@ -128,6 +128,11 @@ mat-card {
     active-indicator-color: var(--mat-spinner-color),
   ));
 
+  @include mat.button-toggle-overrides((
+    shape: 12px,
+    height: fit-content
+  ));
+
   // TODO: Set tooltip colors
   // @include mat.tooltip-overrides((
   //   container-color: orange,
