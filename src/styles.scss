@@ -133,6 +133,12 @@ mat-card {
     height: fit-content
   ));
 
+  @include mat.form-field-overrides((
+    outlined-container-shape: 30px
+  ));
+
+  
+
   // TODO: Set tooltip colors
   // @include mat.tooltip-overrides((
   //   container-color: orange,
