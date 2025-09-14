@@ -2,15 +2,12 @@
     width: 20vw;
     min-width: 20vw;
     vertical-align: middle;
+    height: fit-content;
 }
 
 .search-bar {
   width: 100%;
   max-width: 500px;
-
-  .mat-mdc-form-field-outline {
-    border-radius: 30px; // pill-style rounded edges
-  }
 
   input {
     padding-left: 4px;

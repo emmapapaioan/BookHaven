@@ -7,9 +7,9 @@
     <!-- filters inside -->
     <div class="d-flex flex-wrap gap-3">
       <mat-form-field appearance="outline">
-        <mat-label>Language</mat-label>
+        <mat-label>Price</mat-label>
         <mat-select [(ngModel)]="searchFilters().filter">
-          @for (option of languageOptions; track option.value) {
+          @for (option of priceOptions; track option.value) {
             <mat-option [value]=option.value>{{option.label}}</mat-option>
           }
         </mat-select>
@@ -21,9 +21,9 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Price</mat-label>
+        <mat-label>Language</mat-label>
         <mat-select [(ngModel)]="searchFilters().langRestrict">
-          @for (option of priceOptions; track option.value) {
+          @for (option of languageOptions; track option.value) {
             <mat-option [value]=option.value>{{option.label}}</mat-option>
           }
         </mat-select>
@@ -36,9 +36,9 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Author</mat-label>
-        <input matInput type="text" [(ngModel)]="searchFilters().author"/>
-        @if (searchFilters().author) {
-          <button matIconSuffix matIconButton (click)="clearValue($event, 'author')">
+        <input matInput type="text" [(ngModel)]="searchFilters().inauthor"/>
+        @if (searchFilters().inauthor) {
+          <button matIconSuffix matIconButton (click)="clearValue($event, 'inauthor')">
             <mat-icon>close</mat-icon>
           </button>
         }

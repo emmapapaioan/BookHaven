@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -8,16 +8,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
 
 import { GoogleBooksApi } from '../../core/google-books-api';
 import { GoogleBooksStore } from '../../core/google-books-store';
 import { GoogleBook } from '../../shared/interfaces/google-books-list';
 import { BookDetails } from './book-details/book-details';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { AdvancedSearchFilters } from './advanced-search-filters/advanced-search-filters';
+import { SearchFilters } from '../../shared/interfaces/search-filter';
 
 @Component({
   selector: 'app-search-books',
+  standalone: true,
   imports: [
     CommonModule,
     FormsModule,
@@ -27,12 +32,15 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatListModule,
-    BookDetails,
     MatPaginatorModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatExpansionModule,
+    MatSelectModule,
+    AdvancedSearchFilters,
+    BookDetails,
   ],
   templateUrl: './search-books.html',
-  styleUrl: './search-books.scss'
+  styleUrls: ['./search-books.scss']
 })
 export class SearchBooks {
   private googleBooksStore = inject(GoogleBooksStore);
@@ -45,24 +53,27 @@ export class SearchBooks {
   startIndex: number = 0;
   pageIndex: number = 0;
   hasMoreBooks: boolean = true;
-  
   viewMode: 'default' | 'withImage' | 'list' = 'default';
+
+  showSearchFilters: boolean = false;
+  searchFilters = signal<SearchFilters>({});
 
   books = computed<GoogleBook[]>(() => this.googleBooksStore.books());
 
   ngOnInit() {
   }
 
+  // TODO: Refactor to use only searchFilters
   searchBooks() {
+    this.startIndex = 0;
+    this.showSearchFilters = false;
     this.isSearchLoading = true;
 
-    this.googleBooksApi.searchBooks(this.query, this.maxResults, this.startIndex)
+    this.googleBooksApi.searchBooks(this.query, this.maxResults, this.startIndex, this.searchFilters())
       .subscribe({
         next: (res) => {
           this.googleBooksStore.setBooks(res?.items ?? []);
           this.isSearchLoading = false;
-          this.startIndex +=40;
-          this.pageIndex = 0;
         },
         error: () => {
           this.isSearchLoading = false;
@@ -70,10 +81,12 @@ export class SearchBooks {
       });
   }
 
+  // TODO: Refactor to use only searchFilters
   loadMoreBooks() {
+    this.startIndex +=40;
     this.isLoadMoreLoading = true;
 
-    this.googleBooksApi.searchBooks(this.query, this.maxResults, this.startIndex)
+    this.googleBooksApi.searchBooks(this.query, this.maxResults, this.startIndex, this.searchFilters())
       .subscribe({
         next: (res) => {
           this.handleMoreBooks(res.items);
@@ -91,7 +104,10 @@ export class SearchBooks {
       this.hasMoreBooks = false;
     } else {
       this.googleBooksStore.addBooks(newBooks);
-      this.startIndex += this.maxResults;
     }
+  }
+
+  toggleSearchFilters() {
+    this.showSearchFilters = !this.showSearchFilters;
   }
 }

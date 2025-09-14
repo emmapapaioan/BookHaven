@@ -29,6 +29,6 @@ export const languageOptions: Option[] = [
 
 export const priceOptions: Option[] = [
   { value: 'all', label: 'All' },
-  { value: 'free', label: 'Free' },
-  { value: 'paid', label: 'Paid' },
+  { value: 'free-ebooks', label: 'Free' },    // only free ebooks
+  { value: 'paid-ebooks', label: 'Paid' },    // only paid ebooks
 ];
