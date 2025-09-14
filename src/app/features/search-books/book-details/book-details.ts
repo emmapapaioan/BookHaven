@@ -15,5 +15,5 @@ import { GoogleBook } from '../../../shared/interfaces/google-books-list';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookDetails {
-  @Input() book: GoogleBook | undefined; 
+  @Input() book: GoogleBook | undefined;
 }
