@@ -2,9 +2,12 @@
   <div class="col">
     <mat-card class="book-card h-100" appearance="outlined">
 
-      <div class="book-image-wrapper">
-        <img mat-card-image [src]="book.volumeInfo.imageLinks?.thumbnail?.replace('zoom=1', 'zoom=3')" alt="Book cover"/>
-      </div>
+      @if (viewMode == 'withImage') {
+        <div class="book-image-wrapper">
+          <img mat-card-image [src]="book.volumeInfo.imageLinks?.thumbnail?.replace('zoom=1', 'zoom=3')" alt="Book cover"/>
+        </div>
+      }
+      
       <!-- Header -->
       <mat-card-header>
         <div mat-card-avatar class="book-avatar">

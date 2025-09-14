@@ -16,4 +16,5 @@ import { GoogleBook } from '../../../shared/interfaces/google-books-list';
 })
 export class BookDetails {
   @Input() book: GoogleBook | undefined;
+  @Input() viewMode: 'default' | 'withImage' | 'list' = 'default'; 
 }

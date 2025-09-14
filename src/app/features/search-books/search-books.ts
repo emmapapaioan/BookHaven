@@ -14,6 +14,7 @@ import { GoogleBooksStore } from '../../core/google-books-store';
 import { GoogleBook } from '../../shared/interfaces/google-books-list';
 import { BookDetails } from './book-details/book-details';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-search-books',
@@ -27,7 +28,8 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
     MatProgressSpinnerModule,
     MatListModule,
     BookDetails,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonToggleModule
   ],
   templateUrl: './search-books.html',
   styleUrl: './search-books.scss'
@@ -43,6 +45,8 @@ export class SearchBooks {
   startIndex: number = 0;
   pageIndex: number = 0;
   hasMoreBooks: boolean = true;
+  
+  viewMode: 'default' | 'withImage' | 'list' = 'default';
 
   books = computed<GoogleBook[]>(() => this.googleBooksStore.books());
 

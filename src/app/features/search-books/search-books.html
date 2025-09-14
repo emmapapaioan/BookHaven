@@ -14,23 +14,35 @@
 </div>
 
 @if (books().length && hasMoreBooks) {
-  <div class="d-flex justify-content-start my-5 ms-4">
-    <button mat-flat-button color="primary" (click)="loadMoreBooks()" class="d-flex align-items-center gap-1" [disabled]="isLoadMoreLoading || isSearchLoading">
-      @if (!isLoadMoreLoading) {
-        <mat-icon>expand_more</mat-icon> 
-      } @else {
-        <mat-spinner diameter="16" matSuffix class="inline-spinner me-2"></mat-spinner>
-      }
-      <span>Load more</span>
-    </button>
-    <!-- TODO: Add paginator -->
+  <div class="my-5 mx-4">
+    <div class="d-flex justify-content-between align-items-start">
+      <button mat-flat-button color="primary" (click)="loadMoreBooks()" class="d-flex align-items-center gap-1" [disabled]="isLoadMoreLoading || isSearchLoading">
+        @if (!isLoadMoreLoading) {
+          <mat-icon>expand_more</mat-icon> 
+        } @else {
+          <mat-spinner diameter="16" matSuffix class="inline-spinner me-2"></mat-spinner>
+        }
+        <span>Load more</span>
+      </button>
+      
+      <div class="title-bold">Total Books Loaded: {{ books().length }}</div>
+      <!-- TODO: Add paginator -->
+    </div>
+    <div class="d-flex justify-content-end">
+      <mat-button-toggle-group [(ngModel)]="viewMode" [hideSingleSelectionIndicator]="true" class="view-mode-toggle-group">
+        <mat-button-toggle value="default"><mat-icon class="me-2" color="primary">view_agenda</mat-icon><span>Default</span></mat-button-toggle>
+        <mat-button-toggle value="withImage"><mat-icon class="me-2" color="primary">image</mat-icon><span>With Image</span></mat-button-toggle>
+        <mat-button-toggle value="list" class="list-button" [disabled]="true"><mat-icon class="me-2" color="primary">list</mat-icon><span>List</span></mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
   </div>
+  
 }
 
 <div class="row mx-3">
   @for (book of books(); track book.id) {
     <div class="col-3 mb-4">
-      <app-book-details [book]="book"></app-book-details>
+      <app-book-details [book]="book" [viewMode]="viewMode"></app-book-details>
     </div>
   }
 </div>
