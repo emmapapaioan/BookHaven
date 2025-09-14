@@ -21,16 +21,15 @@
   --sidebar-bg: #f9fafb;
   --sidebar-text: #1f2937;
   --sidebar-border: #e5e7eb;
-  --sidebar-icon: #6b7280;
-  --sidebar-accent: #6366f1;
+  --sidebar-icon: #348AA7;
+  --sidebar-accent: #348AA7;
   --sidebar-hover-bg: #eef2ff; // soft hover background
   --sidebar-hover-text: #4338ca; // optional deeper indigo
-  --sidebar-logo-text: #766eda;
 
-  --title-color:#766eda;
+  --title-color:#348AA7;
 
   --mat-icon: #605d62;
-  --mat-icon-primary: #6750a4; 
+  --mat-icon-primary: #348AA7; 
   --mat-icon-accent: #625b71; 
   --mat-icon-warn: #ba1a1a;
 
@@ -55,18 +54,24 @@
 
 
   --sidebar-border: #1f2937;
-  --sidebar-icon: #9ca3af;
-  --sidebar-accent: #c4b5fd;     
-  --sidebar-logo-text: #9f9cc6;
+  --sidebar-icon: #348AA7;
+  --sidebar-accent: #348AA7;    
 
-  --title-color:#9f9cc6;
+  --title-color: #348AA7;
 
   --mat-icon: #cac5cb;
-  --mat-icon-primary: #938ba9; 
+  --mat-icon-primary: #348AA7; 
   --mat-icon-accent: #ccc2dc; 
   --mat-icon-warn: #ffb4ab;
 
   --mat-spinner-color: #938ba9;
+
+  mat-card {
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.8),  
+      0 8px 16px rgba(0, 0, 0, 0.7),  
+      0 12px 24px rgba(0, 0, 0, 0.6)   !important;
+    }
 }
 
 // Global reset styles (unchanged)
@@ -86,6 +91,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 // Cards
+/* Apply to all mat-cards */
+mat-card {
+  cursor: pointer;
+  transition: transform 0.25s ease;
+
+  box-shadow: 
+    0px 7px 8px -4px rgba(0, 0, 0, 0.2), 
+    0px 12px 17px 2px rgba(0, 0, 0, 0.14), 
+    0px 5px 22px 4px rgba(0, 0, 0, 0.12) !important;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
 .mat-mdc-card-title {
   color: var(--title-color);
   font-weight: 500 !important;
@@ -114,4 +134,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   //   container-shape: red,
   // ));
 }
+
 
