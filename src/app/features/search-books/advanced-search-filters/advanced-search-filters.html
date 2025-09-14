@@ -1,0 +1,48 @@
+<mat-accordion>
+  <mat-expansion-panel hideToggle [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title> Advanced Filters </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <!-- filters inside -->
+    <div class="d-flex flex-wrap gap-3">
+      <mat-form-field appearance="outline">
+        <mat-label>Language</mat-label>
+        <mat-select [(ngModel)]="searchFilters().filter">
+          @for (option of languageOptions; track option.value) {
+            <mat-option [value]=option.value>{{option.label}}</mat-option>
+          }
+        </mat-select>
+        @if (searchFilters().filter) {
+          <button matIconSuffix matIconButton (click)="clearValue($event, 'filter')">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Price</mat-label>
+        <mat-select [(ngModel)]="searchFilters().langRestrict">
+          @for (option of priceOptions; track option.value) {
+            <mat-option [value]=option.value>{{option.label}}</mat-option>
+          }
+        </mat-select>
+        @if (searchFilters().langRestrict) {
+          <button matIconSuffix matIconButton (click)="clearValue($event, 'langRestrict')">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Author</mat-label>
+        <input matInput type="text" [(ngModel)]="searchFilters().author"/>
+        @if (searchFilters().author) {
+          <button matIconSuffix matIconButton (click)="clearValue($event, 'author')">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
