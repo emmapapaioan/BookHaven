@@ -49,9 +49,6 @@ export class SearchBooks {
   googleBooks: GoogleBook[] = [];
   isSearchLoading: boolean = false;
   isLoadMoreLoading: boolean = false;
-  maxResults: number = 40;
-  startIndex: number = 0;
-  pageIndex: number = 0;
   hasMoreBooks: boolean = true;
   viewMode: 'default' | 'withImage' | 'list' = 'default';
 
@@ -63,13 +60,12 @@ export class SearchBooks {
   ngOnInit() {
   }
 
-  // TODO: Refactor to use only searchFilters
   searchBooks() {
-    this.startIndex = 0;
+    this.searchFilters.update(f => ({ ...f, startIndex: 0 }));
     this.showSearchFilters = false;
     this.isSearchLoading = true;
 
-    this.googleBooksApi.searchBooks(this.query, this.maxResults, this.startIndex, this.searchFilters())
+    this.googleBooksApi.searchBooks(this.searchFilters())
       .subscribe({
         next: (res) => {
           this.googleBooksStore.setBooks(res?.items ?? []);
@@ -81,12 +77,11 @@ export class SearchBooks {
       });
   }
 
-  // TODO: Refactor to use only searchFilters
   loadMoreBooks() {
-    this.startIndex +=40;
+    this.searchFilters.update(f => ({ ...f, startIndex: (f.startIndex ?? 0) + (f.maxResults ?? 10) }));
     this.isLoadMoreLoading = true;
 
-    this.googleBooksApi.searchBooks(this.query, this.maxResults, this.startIndex, this.searchFilters())
+    this.googleBooksApi.searchBooks(this.searchFilters())
       .subscribe({
         next: (res) => {
           this.handleMoreBooks(res.items);
