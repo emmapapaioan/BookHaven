@@ -1,6 +1,6 @@
 import { Option } from "../interfaces/option";
 
-export const languageOptions: Option[] = [
+export const langRestrictOptions: Option[] = [ // Language options        
   { value: 'en', label: 'English' },
   { value: 'es', label: 'Spanish' },
   { value: 'fr', label: 'French' },
@@ -27,8 +27,37 @@ export const languageOptions: Option[] = [
   { value: 'vi', label: 'Vietnamese' }
 ];
 
-export const priceOptions: Option[] = [
-  { value: 'all', label: 'All' },
-  { value: 'free-ebooks', label: 'Free' },    // only free ebooks
-  { value: 'paid-ebooks', label: 'Paid' },    // only paid ebooks
+export const filterOptions: Option[] = [ // Price options
+  { value: 'ebooks', label: 'All Google eBooks' },       // All Google eBooks (free and paid)
+  { value: 'free-ebooks', label: 'Free eBooks' },        // Only eBooks available for free
+  { value: 'full', label: 'Full View (entire book)' },   // Books fully available to read online
+  { value: 'paid-ebooks', label: 'Paid eBooks' },        // Only eBooks that require purchase
+  { value: 'partial', label: 'Partial View (preview)' }, // Books with limited preview pages
+];
+
+export const printTypeOptions: Option[] = [
+  { value: 'all', label: 'All' },            // All volume content types
+  { value: 'books', label: 'Books' },        // Only books
+  { value: 'magazines', label: 'Magazines' } // Only magazines
+];
+
+export const libraryRestrictOptions: Option[] = [
+  { value: 'no-restrict', label: 'All Books' }, // Do not restrict based on user's library
+  { value: 'my-library', label: 'My Library' }  // Restrict to the user's library (any shelf)
+];
+
+export const orderByOptions: Option[] = [
+  { value: 'relevance', label: 'Relevance' }, // Sort by relevance to search terms
+  { value: 'newest', label: 'Newest' }        // Sort by most recently published
+];
+
+export const maxResultsOptions: Option[] = [
+  { value: 5, label: '5 results' },
+  { value: 10, label: '10 results' },
+  { value: 15, label: '15 results' },
+  { value: 20, label: '20 results' },
+  { value: 25, label: '25 results' },
+  { value: 30, label: '30 results' },
+  { value: 35, label: '35 results' },
+  { value: 40, label: '40 results' },
 ];
