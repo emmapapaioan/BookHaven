@@ -17,7 +17,7 @@
           {{ book.volumeInfo.title }}
         </mat-card-title>
         <mat-card-subtitle class="card-subtitle">
-          {{ book.volumeInfo.categories?.join(', ') ?? 'N/A' }}
+          {{ book.volumeInfo.authors?.join(', ') ?? 'N/A' }}
         </mat-card-subtitle>
       </mat-card-header>
 
