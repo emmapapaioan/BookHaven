@@ -14,6 +14,10 @@ export class AuthManager {
   user = signal<GoogleUser | null>(null);
   token = signal<string | null>(null);
 
+  constructor() {
+    this.loadFromStorage();
+  }
+
   loadFromStorage() {
     const token = localStorage.getItem('access_token');
     const user = localStorage.getItem('user');
