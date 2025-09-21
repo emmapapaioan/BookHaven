@@ -45,7 +45,6 @@ import { SearchFilters } from '../../shared/interfaces/search-filter';
 export class SearchBooks {
   private googleBooksStore = inject(GoogleBooksStore);
   private googleBooksApi = inject(GoogleBooksApi);
-  query: string = '';
   googleBooks: GoogleBook[] = [];
   isSearchLoading: boolean = false;
   isLoadMoreLoading: boolean = false;

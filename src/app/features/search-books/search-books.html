@@ -1,14 +1,14 @@
 <div class="d-flex align-items-center justify-content-center gap-3 mx-4 mt-4">
   <mat-form-field appearance="outline" class="search-bar">
     <mat-icon matPrefix>search</mat-icon>
-    <input matInput placeholder="Search books" [(ngModel)]="query" (keyup.enter)="query && searchBooks()"/>
+    <input matInput placeholder="Search books" [(ngModel)]="searchFilters().q" (keyup.enter)="searchFilters().q && searchBooks()"/>
 
     @if (!isSearchLoading) {
       <ng-container matSuffix>
         <button mat-icon-button (click)="toggleSearchFilters()">
           <mat-icon>tune</mat-icon>
         </button>
-        <button mat-icon-button class="me-2" (click)="query && searchBooks()">
+        <button mat-icon-button class="me-2" (click)="searchFilters().q && searchBooks()">
           <mat-icon>arrow_forward</mat-icon>
         </button>
       </ng-container>
