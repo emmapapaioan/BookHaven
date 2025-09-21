@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { GoogleBooks } from '../shared/interfaces/google-books-list';
+import { GoogleBooks } from '../shared/interfaces/google-books';
 import { SearchFilters } from '../shared/interfaces/search-filter';
 
 @Injectable({

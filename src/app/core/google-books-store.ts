@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 
-import { GoogleBook } from '../shared/interfaces/google-books-list';
+import { GoogleBook } from '../shared/interfaces/google-books';
 
 @Injectable({
   providedIn: 'root'

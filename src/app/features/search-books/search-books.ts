@@ -15,7 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { GoogleBooksApi } from '../../core/google-books-api';
 import { GoogleBooksStore } from '../../core/google-books-store';
-import { GoogleBook } from '../../shared/interfaces/google-books-list';
+import { GoogleBook } from '../../shared/interfaces/google-books';
 import { BookDetails } from './book-details/book-details';
 import { AdvancedSearchFilters } from './advanced-search-filters/advanced-search-filters';
 import { SearchFilters } from '../../shared/interfaces/search-filter';

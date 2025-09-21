@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 
-import { GoogleBook } from '../../../shared/interfaces/google-books-list';
+import { GoogleBook } from '../../../shared/interfaces/google-books';
 
 @Component({
   selector: 'app-book-details',
