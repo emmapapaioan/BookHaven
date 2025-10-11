@@ -47,7 +47,7 @@
         <mat-button-toggle value="withImage">
           <mat-icon class="me-2" color="primary">image</mat-icon>
           <span>With Image</span></mat-button-toggle>
-        <mat-button-toggle value="list" class="list-button" [disabled]="true">
+        <mat-button-toggle value="list" class="list-button">
           <mat-icon class="me-2" color="primary">list</mat-icon>
           <span>List</span>
         </mat-button-toggle>
@@ -56,10 +56,14 @@
   </div>
 }
 
-<div class="row mx-3">
-  @for (book of books(); track book.id) {
-    <div class="col-3 mb-4">
-      <app-book-details [book]="book" [viewMode]="viewMode"></app-book-details>
-    </div>
-  }
-</div>
+@if (viewMode != 'list') {
+  <div class="row mx-3">
+    @for (book of books(); track book.id) {
+      <div class="col-3 mb-4">
+        <app-book-details [book]="book" [viewMode]="viewMode"></app-book-details>
+      </div>
+    }
+  </div>
+} @else {
+  <app-book-table [books]="books()"></app-book-table>
+}

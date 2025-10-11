@@ -1,0 +1,50 @@
+<div class="mat-elevation-z8 px-5 py-5">
+  <table mat-table [dataSource]="dataSource" matSort class="full-width-table">
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+      <td mat-cell *matCellDef="let row">{{ row.title ?? '-'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="authors">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Authors</th>
+      <td mat-cell *matCellDef="let row">{{ row.authors ?? '-' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="averageRating">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Avg Rating</th>
+      <td mat-cell *matCellDef="let row">{{ row.averageRating ?? '-' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="language">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Language</th>
+      <td mat-cell *matCellDef="let row">{{ getLanguageLabel(row.language) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="publishedDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Published Date</th>
+      <td mat-cell *matCellDef="let row">{{ row.publishedDate ?? '-' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="categories">
+      <th mat-header-cell *matHeaderCellDef>Categories</th>
+      <td mat-cell *matCellDef="let row">{{ row.categories ?? '-' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="infoLink">
+      <th mat-header-cell *matHeaderCellDef>Info</th>
+      <td mat-cell *matCellDef="let row"><a [href]="row.infoLink" target="_blank" class="title-bold">Info</a></td>
+    </ng-container>
+
+    <ng-container matColumnDef="previewLink">
+      <th mat-header-cell *matHeaderCellDef>Preview</th>
+      <td mat-cell *matCellDef="let row"><a [href]="row.previewLink" target="_blank" class="title-bold">Preview</a></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr class="mat-row" *matNoDataRow><td class="mat-cell" [attr.colspan]="displayedColumns.length">No data found.</td></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons aria-label="Select page of books" class="pt-4 my-paginator"></mat-paginator>
+</div>

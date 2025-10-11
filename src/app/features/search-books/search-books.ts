@@ -19,6 +19,7 @@ import { GoogleBook } from '../../shared/interfaces/google-books';
 import { BookDetails } from './book-details/book-details';
 import { AdvancedSearchFilters } from './advanced-search-filters/advanced-search-filters';
 import { SearchFilters } from '../../shared/interfaces/search-filter';
+import { BookTable } from './book-table/book-table';
 
 @Component({
   selector: 'app-search-books',
@@ -38,6 +39,7 @@ import { SearchFilters } from '../../shared/interfaces/search-filter';
     MatSelectModule,
     AdvancedSearchFilters,
     BookDetails,
+    BookTable,
   ],
   templateUrl: './search-books.html',
   styleUrls: ['./search-books.scss']
