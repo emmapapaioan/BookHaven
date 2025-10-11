@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, SimpleChange } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -16,5 +16,7 @@ import { GoogleBook } from '../../../shared/interfaces/google-books';
 })
 export class BookDetails {
   @Input() book: GoogleBook | undefined;
-  @Input() viewMode: 'default' | 'withImage' | 'list' = 'default'; 
+  @Input() viewMode: 'default' | 'withImage' | 'list' = 'default';
+
+  defaultCover = 'images/default-cover.png';
 }

@@ -4,7 +4,7 @@
 
       @if (viewMode == 'withImage') {
         <div class="book-image-wrapper">
-          <img mat-card-image [src]="book.volumeInfo.imageLinks?.thumbnail?.replace('zoom=1', 'zoom=3')" alt="Book cover"/>
+          <img mat-card-image [src]="book.volumeInfo.imageLinks?.smallThumbnail?.replace('zoom=5', 'zoom=3') || defaultCover" alt="Book cover"/>
         </div>
       }
       
