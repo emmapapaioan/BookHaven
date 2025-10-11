@@ -137,7 +137,10 @@ mat-card {
     outlined-container-shape: 30px
   ));
 
-  
+  @include mat.paginator-overrides((
+    page-size-select-width: 7rem
+  ));
+
 
   // TODO: Set tooltip colors
   // @include mat.tooltip-overrides((
