@@ -28,8 +28,8 @@
 
       <!-- Actions -->
       <mat-card-actions class="mt-auto">
-        <button mat-button>Info</button>
-        <button mat-button>Add</button>
+        <button mat-button (click)="showInfo(book.volumeInfo.infoLink)">Info</button>
+        <button mat-button (click)="showPreview(book.volumeInfo.previewLink)">Preview</button>
       </mat-card-actions>
 
     </mat-card>
