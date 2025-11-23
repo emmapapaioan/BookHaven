@@ -1,14 +1,17 @@
 <div class="d-flex align-items-center justify-content-center gap-3 mx-4 mt-4">
   <mat-form-field appearance="outline" class="search-bar">
     <mat-icon matPrefix>search</mat-icon>
-    <input matInput placeholder="Search books" [(ngModel)]="searchFilters().q" (keyup.enter)="searchFilters().q && searchBooks()"/>
-
+    <input matInput placeholder="Search books" name="searchQuery" #searchQuery="ngModel" required
+      [(ngModel)]="searchFilters().q" (keyup.enter)="searchQuery.valid && searchBooks()"/>
+    @if (searchQuery.invalid && searchQuery.touched){
+      <mat-error>Search books term is required</mat-error>
+    }
     @if (!isSearchLoading) {
       <ng-container matSuffix>
         <button mat-icon-button (click)="toggleSearchFilters()">
           <mat-icon>tune</mat-icon>
         </button>
-        <button mat-icon-button class="me-2" (click)="searchFilters().q && searchBooks()">
+        <button mat-icon-button class="me-2" (click)="searchQuery.valid && searchBooks()">
           <mat-icon>arrow_forward</mat-icon>
         </button>
       </ng-container>
@@ -25,7 +28,7 @@
 
 @if (books().length && hasMoreBooks) {
   <div class="my-5 mx-4">
-    <div class="d-flex justify-content-between align-items-start">
+    <div class="d-flex justify-content-between align-items-start mx-1">
       <button mat-flat-button color="primary" (click)="loadMoreBooks()" class="d-flex align-items-center gap-1" [disabled]="isLoadMoreLoading || isSearchLoading">
         @if (!isLoadMoreLoading) {
           <mat-icon>expand_more</mat-icon>
@@ -36,9 +39,9 @@
       </button>
 
       <div class="title-bold">Total Books Loaded: {{ books().length }}</div>
-      <!-- TODO: Add paginator -->
     </div>
-    <div class="d-flex justify-content-end">
+
+    <div class="d-flex justify-content-end mx-1">
       <mat-button-toggle-group [(ngModel)]="viewMode" [hideSingleSelectionIndicator]="true" class="view-mode-toggle-group">
         <mat-button-toggle value="default">
           <mat-icon class="me-2" color="primary">view_agenda</mat-icon>
