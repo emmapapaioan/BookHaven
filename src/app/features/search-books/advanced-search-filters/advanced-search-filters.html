@@ -1,90 +1,92 @@
-<mat-accordion>
-  <mat-expansion-panel hideToggle [expanded]="true">
-    <mat-expansion-panel-header>
-      <mat-panel-title> Advanced Filters </mat-panel-title>
-    </mat-expansion-panel-header>
+<div class="mt-4 mx-4">
+  <mat-accordion>
+    <mat-expansion-panel hideToggle [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Advanced Filters </mat-panel-title>
+      </mat-expansion-panel-header>
 
-    <!-- filters inside -->
-    <div class="d-flex flex-wrap gap-3">
-      <mat-form-field appearance="outline">
-        <mat-label>Author</mat-label>
-        <input matInput type="text" [(ngModel)]="searchFilters().inauthor"/>
-        @if (searchFilters().inauthor) {
-          <button matIconSuffix matIconButton (click)="clearValue($event, 'inauthor')">
-            <mat-icon>close</mat-icon>
-          </button>
-        }
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Price</mat-label>
-        <mat-select [(ngModel)]="searchFilters().filter">
-          @for (option of filterOptions; track option.value) {
-            <mat-option [value]=option.value>{{option.label}}</mat-option>
+      <!-- filters inside -->
+      <div class="d-flex flex-wrap gap-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Author</mat-label>
+          <input matInput type="text" [(ngModel)]="searchFilters().inauthor"/>
+          @if (searchFilters().inauthor) {
+            <button matIconSuffix matIconButton (click)="clearValue($event, 'inauthor')">
+              <mat-icon>close</mat-icon>
+            </button>
           }
-        </mat-select>
-        @if (searchFilters().filter) {
-          <button matIconSuffix matIconButton (click)="clearValue($event, 'filter')">
-            <mat-icon>close</mat-icon>
-          </button>
-        }
-      </mat-form-field>
+        </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Language</mat-label>
-        <mat-select [(ngModel)]="searchFilters().langRestrict">
-          @for (option of langRestrictOptions; track option.value) {
-            <mat-option [value]=option.value>{{option.label}}</mat-option>
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <mat-select [(ngModel)]="searchFilters().filter">
+            @for (option of filterOptions; track option.value) {
+              <mat-option [value]=option.value>{{option.label}}</mat-option>
+            }
+          </mat-select>
+          @if (searchFilters().filter) {
+            <button matIconSuffix matIconButton (click)="clearValue($event, 'filter')">
+              <mat-icon>close</mat-icon>
+            </button>
           }
-        </mat-select>
-        @if (searchFilters().langRestrict) {
-          <button matIconSuffix matIconButton (click)="clearValue($event, 'langRestrict')">
-            <mat-icon>close</mat-icon>
-          </button>
-        }
-      </mat-form-field>
+        </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Content Type</mat-label>
-        <mat-select [(ngModel)]="searchFilters().printType">
-          @for (option of printTypeOptions; track option.value) {
-            <mat-option [value]=option.value>{{option.label}}</mat-option>
+        <mat-form-field appearance="outline">
+          <mat-label>Language</mat-label>
+          <mat-select [(ngModel)]="searchFilters().langRestrict">
+            @for (option of langRestrictOptions; track option.value) {
+              <mat-option [value]=option.value>{{option.label}}</mat-option>
+            }
+          </mat-select>
+          @if (searchFilters().langRestrict) {
+            <button matIconSuffix matIconButton (click)="clearValue($event, 'langRestrict')">
+              <mat-icon>close</mat-icon>
+            </button>
           }
-        </mat-select>
-        @if (searchFilters().printType) {
-          <button matIconSuffix matIconButton (click)="clearValue($event, 'printType')">
-            <mat-icon>close</mat-icon>
-          </button>
-        }
-      </mat-form-field>
+        </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Order By</mat-label>
-        <mat-select [(ngModel)]="searchFilters().orderBy">
-          @for (option of orderByOptions; track option.value) {
-            <mat-option [value]=option.value>{{option.label}}</mat-option>
+        <mat-form-field appearance="outline">
+          <mat-label>Content Type</mat-label>
+          <mat-select [(ngModel)]="searchFilters().printType">
+            @for (option of printTypeOptions; track option.value) {
+              <mat-option [value]=option.value>{{option.label}}</mat-option>
+            }
+          </mat-select>
+          @if (searchFilters().printType) {
+            <button matIconSuffix matIconButton (click)="clearValue($event, 'printType')">
+              <mat-icon>close</mat-icon>
+            </button>
           }
-        </mat-select>
-        @if (searchFilters().orderBy) {
-          <button matIconSuffix matIconButton (click)="clearValue($event, 'orderBy')">
-            <mat-icon>close</mat-icon>
-          </button>
-        }
-      </mat-form-field>
+        </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Max Results</mat-label>
-        <mat-select [(ngModel)]="searchFilters().maxResults">
-          @for (option of maxResultsOptions; track option.value) {
-            <mat-option [value]=option.value>{{option.label}}</mat-option>
+        <mat-form-field appearance="outline">
+          <mat-label>Order By</mat-label>
+          <mat-select [(ngModel)]="searchFilters().orderBy">
+            @for (option of orderByOptions; track option.value) {
+              <mat-option [value]=option.value>{{option.label}}</mat-option>
+            }
+          </mat-select>
+          @if (searchFilters().orderBy) {
+            <button matIconSuffix matIconButton (click)="clearValue($event, 'orderBy')">
+              <mat-icon>close</mat-icon>
+            </button>
           }
-        </mat-select>
-        @if (searchFilters().maxResults) {
-          <button matIconSuffix matIconButton (click)="clearValue($event, 'maxResults')">
-            <mat-icon>close</mat-icon>
-          </button>
-        }
-      </mat-form-field>
-    </div>
-  </mat-expansion-panel>
-</mat-accordion>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Max Results</mat-label>
+          <mat-select [(ngModel)]="searchFilters().maxResults">
+            @for (option of maxResultsOptions; track option.value) {
+              <mat-option [value]=option.value>{{option.label}}</mat-option>
+            }
+          </mat-select>
+          @if (searchFilters().maxResults) {
+            <button matIconSuffix matIconButton (click)="clearValue($event, 'maxResults')">
+              <mat-icon>close</mat-icon>
+            </button>
+          }
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
