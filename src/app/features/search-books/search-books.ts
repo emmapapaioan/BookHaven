@@ -51,6 +51,7 @@ export class SearchBooks {
   isSearchLoading: boolean = false;
   isLoadMoreLoading: boolean = false;
   hasMoreBooks: boolean = true;
+  hasSearched: boolean = false;
   viewMode: 'default' | 'withImage' | 'list' = 'default';
 
   showSearchFilters: boolean = false;
@@ -62,14 +63,14 @@ export class SearchBooks {
   }
 
   searchBooks() {
+    this.hasSearched = true;
     this.searchFilters.update(f => ({ ...f, startIndex: 0 }));
-    this.showSearchFilters = false;
     this.isSearchLoading = true;
 
     this.googleBooksApi.searchBooks(this.searchFilters())
       .subscribe({
         next: (res) => {
-          this.googleBooksStore.setBooks(res?.items ?? []);
+          this.googleBooksStore.setBooks(res?.items ?? [], this.searchFilters().langRestrict);
           this.isSearchLoading = false;
         },
         error: () => {
